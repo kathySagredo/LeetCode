@@ -9,14 +9,22 @@ while (true){
 }
 console.log(nums) */
 
-// Variables
-var nums = prompt("Ingresa una lista de valores separados por espacio:").split(" ");
+/* var nums = prompt("Ingresa una lista de valores separados por espacio:").split(" ");
 nums = nums.map(function(num) {
-    return parseInt(num); 
+    return parseFloat(num); 
 });
-var target = prompt("Elige un número entero como objetivo:");
+var target = prompt("Elige un número entero como objetivo:"); */
 
-//Función
+// Función
+var obtenerDatos = function(){
+    var nums = document.getElementById("listNums").value.split(" ")
+    nums = nums.map(function(num) {
+        return parseFloat(num); 
+    });
+    var target = document.getElementById("target").value
+    twoSum(nums, target)
+}
+ 
 var twoSum = function(nums, target){
     var arrayIndice = []
     for (let i = 0; i < nums.length; i++) {
@@ -30,8 +38,13 @@ var twoSum = function(nums, target){
             }    
         }
     }
-
-    return console.log(arrayIndice)
+    escribirHTML(nums, target, arrayIndice)
+    return console.log("Los indices de los números que sumados dan el valor objetivo son: ", arrayIndice)
 }
-twoSum(nums, target)
 
+var escribirHTML = function(nums, target, arrayIndice){
+    var etiqueta = document.getElementById("result");
+    etiqueta.innerHTML = `<p><strong>La solución del ejercicio con los parametros ingresados:</strong></p>
+    <pre class="ps-3"><strong>Input:</strong> nums = ${nums}, target = ${target}<br><strong>Output:</strong> [${arrayIndice}]</pre>`
+    document.getElementById("form").reset();
+}
