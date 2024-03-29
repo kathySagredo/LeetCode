@@ -38,6 +38,7 @@ var twoSum = function(nums, target){
             }    
         }
     }
+    arrayIndice = arrayIndice.sort()
     escribirHTML(nums, target, arrayIndice)
     return console.log("Los indices de los números que sumados dan el valor objetivo son: ", arrayIndice)
 }
@@ -45,6 +46,6 @@ var twoSum = function(nums, target){
 var escribirHTML = function(nums, target, arrayIndice){
     var etiqueta = document.getElementById("result");
     etiqueta.innerHTML = `<p><strong>La solución del ejercicio con los parametros ingresados:</strong></p>
-    <pre class="ps-3"><strong>Input:</strong> nums = ${nums}, target = ${target}<br><strong>Output:</strong> [${arrayIndice}]</pre>`
+    <pre class="ps-3"><strong>Input:</strong> nums = [${nums}], target = ${target}<br><strong>Output:</strong> [${arrayIndice}]</pre>`
     document.getElementById("form").reset();
 }
